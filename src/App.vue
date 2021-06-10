@@ -1,27 +1,20 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-gray-900">Bike gear calculator</h1>
+    </div>
+  </header>
+
+  <main>
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">My content</div>
+  </main>
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue'
-  import HelloWorld from './components/HelloWorld.vue'
 
   export default defineComponent({
     name: 'App',
-    components: {
-      HelloWorld,
-    },
+    components: {},
   })
 </script>
-
-<style>
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
-</style>
