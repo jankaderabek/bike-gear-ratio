@@ -11,7 +11,7 @@ export class Bike {
     this.#crankSet = crankSet
   }
 
-  get Bike(): Gear[] {
+  get gears(): Gear[] {
     const Bike: Gear[] = []
 
     for (const chainRing of this.#crankSet.chainRings) {

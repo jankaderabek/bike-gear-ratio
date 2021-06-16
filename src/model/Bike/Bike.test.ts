@@ -17,6 +17,6 @@ describe('Bike test', () => {
 
     expect(bike.crankSet).toBe(crankSet)
     expect(bike.cassette).toBe(cassette)
-    expect(bike.Bike).toHaveLength(6)
+    expect(bike.gears).toHaveLength(6)
   })
 })
