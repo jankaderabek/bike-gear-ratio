@@ -23,6 +23,14 @@ export class GearSystem {
     return gers
   }
 
+  get easiestGear(): Gear {
+    return new Gear(this.#crankSet.smallest, this.#cassette.biggest)
+  }
+
+  get hardestGear(): Gear {
+    return new Gear(this.#crankSet.biggest, this.#cassette.smallest)
+  }
+
   get crankSet(): CrankSet {
     return this.#crankSet
   }

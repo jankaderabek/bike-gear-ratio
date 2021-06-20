@@ -22,6 +22,14 @@ export class Bike {
     return new GearSpeed(gear, this.wheel, cadence)
   }
 
+  minimalSpeed(cadence: number): GearSpeed {
+    return new GearSpeed(this.#gearSystem.easiestGear, this.#wheel, cadence)
+  }
+
+  maximalSpeed(cadence: number): GearSpeed {
+    return new GearSpeed(this.#gearSystem.hardestGear, this.#wheel, cadence)
+  }
+
   get gearSystem(): GearSystem {
     return this.#gearSystem
   }

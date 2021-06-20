@@ -22,4 +22,16 @@ export class Gear {
   get sprocket(): Sprocket {
     return this.#sprocket
   }
+
+  equal(to: Gear): boolean {
+    if (!this.#sprocket.equal(to.sprocket)) {
+      return false
+    }
+
+    if (!this.#chainRing.equal(to.chainRing)) {
+      return false
+    }
+
+    return true
+  }
 }

@@ -3,6 +3,7 @@ import { Sprocket } from '@/model/Bike/GearSystem/Components/Cassette/Sprocket'
 import { CrankSet } from '@/model/Bike/GearSystem/Components/CrankSet/CrankSet'
 import { Cassette } from '@/model/Bike/GearSystem/Components/Cassette/Cassette'
 import { GearSystem } from '@/model/Bike/GearSystem/GearSystem'
+import { Gear } from '@/model/Bike/GearSystem/Gears/Gear'
 
 describe('Bike test', () => {
   it('create new custom bike', () => {
@@ -13,10 +14,22 @@ describe('Bike test', () => {
       new Sprocket(21)
     )
 
-    const bike = new GearSystem(crankSet, cassette)
+    const gearSystem = new GearSystem(crankSet, cassette)
 
-    expect(bike.crankSet).toBe(crankSet)
-    expect(bike.cassette).toBe(cassette)
-    expect(bike.gears).toHaveLength(6)
+    expect(gearSystem.crankSet).toBe(crankSet)
+    expect(gearSystem.cassette).toBe(cassette)
+    expect(gearSystem.gears).toHaveLength(6)
+
+    expect(
+      gearSystem.easiestGear.equal(
+        new Gear(new ChainRing(32), new Sprocket(21))
+      )
+    ).toBeTruthy()
+
+    expect(
+      gearSystem.hardestGear.equal(
+        new Gear(new ChainRing(48), new Sprocket(15))
+      )
+    ).toBeTruthy()
   })
 })

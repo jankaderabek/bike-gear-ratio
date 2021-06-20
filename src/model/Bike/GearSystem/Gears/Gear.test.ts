@@ -14,4 +14,21 @@ describe('Gear test', () => {
     expect(gear.sprocket).toBe(sprocket)
     expect(gear.ratio).toBeInstanceOf(GearRatio)
   })
+
+  it('will be equal to given gear?', () => {
+    const chainRing = new ChainRing(48)
+    const sprocket = new Sprocket(15)
+
+    const gear = new Gear(chainRing, sprocket)
+
+    expect(
+      gear.equal(new Gear(new ChainRing(32), new Sprocket(15)))
+    ).toBeFalsy()
+    expect(
+      gear.equal(new Gear(new ChainRing(48), new Sprocket(12)))
+    ).toBeFalsy()
+    expect(
+      gear.equal(new Gear(new ChainRing(48), new Sprocket(15)))
+    ).toBeTruthy()
+  })
 })
