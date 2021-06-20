@@ -1,4 +1,4 @@
-import { Sprocket } from '@/model/Bike/Components/Cassette/Sprocket'
+import { Sprocket } from '@/model/Bike/GearSystem/Components/Cassette/Sprocket'
 
 export class Cassette {
   readonly #sprockets: Sprocket[]

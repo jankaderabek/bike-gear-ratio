@@ -1,5 +1,5 @@
-import { Sprocket } from '@/model/Bike/Components/Cassette/Sprocket'
-import { Cassette } from '@/model/Bike/Components/Cassette/Cassette'
+import { Sprocket } from '@/model/Bike/GearSystem/Components/Cassette/Sprocket'
+import { Cassette } from '@/model/Bike/GearSystem/Components/Cassette/Cassette'
 
 describe('Cassette test', () => {
   it('create new cassette with sprockets', () => {

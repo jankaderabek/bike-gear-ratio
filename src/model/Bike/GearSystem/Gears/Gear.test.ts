@@ -1,7 +1,7 @@
-import { Gear } from '@/model/Bike/Gears/Gear'
-import { ChainRing } from '@/model/Bike/Components/CrankSet/ChainRing'
-import { Sprocket } from '@/model/Bike/Components/Cassette/Sprocket'
-import { GearRatio } from '@/model/Bike/Gears/GearRatio'
+import { Gear } from '@/model/Bike/GearSystem/Gears/Gear'
+import { ChainRing } from '@/model/Bike/GearSystem/Components/CrankSet/ChainRing'
+import { Sprocket } from '@/model/Bike/GearSystem/Components/Cassette/Sprocket'
+import { GearRatio } from '@/model/Bike/GearSystem/Gears/GearRatio'
 
 describe('Gear test', () => {
   it('construct specific gear with chain ring and sprocket', () => {

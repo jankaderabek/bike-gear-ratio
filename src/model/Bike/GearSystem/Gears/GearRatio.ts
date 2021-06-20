@@ -1,4 +1,4 @@
-import { Gear } from '@/model/Bike/Gears/Gear'
+import { Gear } from '@/model/Bike/GearSystem/Gears/Gear'
 
 export class GearRatio {
   readonly #gear: Gear
@@ -7,7 +7,7 @@ export class GearRatio {
     this.#gear = gear
   }
 
-  get ratio(): number {
+  get value(): number {
     return this.#gear.chainRing.teethes / this.#gear.sprocket.teethes
   }
 

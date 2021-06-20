@@ -1,33 +1,32 @@
-import { CrankSet } from '@/model/Bike/Components/CrankSet/CrankSet'
-import { Cassette } from '@/model/Bike/Components/Cassette/Cassette'
-import { Gear } from '@/model/Bike/Gears/Gear'
+import { GearSystem } from '@/model/Bike/GearSystem/GearSystem'
+import { Wheel } from '@/model/Bike/Wheel'
+import { Gear } from '@/model/Bike/GearSystem/Gears/Gear'
+import { GearDevelopment } from '@/model/Bike/GearDevelopment'
+import { GearSpeed } from '@/model/Bike/GearSpeed'
 
 export class Bike {
-  readonly #crankSet: CrankSet
-  readonly #cassette: Cassette
+  readonly #gearSystem: GearSystem
+  readonly #wheel: Wheel
 
-  constructor(crankSet: CrankSet, cassette: Cassette) {
-    this.#cassette = cassette
-    this.#crankSet = crankSet
+  constructor(gearSystem: GearSystem, wheel: Wheel) {
+    this.#gearSystem = gearSystem
+    this.#wheel = wheel
   }
 
-  get gears(): Gear[] {
-    const Bike: Gear[] = []
-
-    for (const chainRing of this.#crankSet.chainRings) {
-      for (const sprocket of this.#cassette.sprockets) {
-        Bike.push(new Gear(chainRing, sprocket))
-      }
-    }
-
-    return Bike
+  // development for gear index instead of accept gear?
+  development(gear: Gear): GearDevelopment {
+    return new GearDevelopment(gear, this.wheel)
   }
 
-  get crankSet(): CrankSet {
-    return this.#crankSet
+  speed(gear: Gear, cadence: number): GearSpeed {
+    return new GearSpeed(gear, this.wheel, cadence)
   }
 
-  get cassette(): Cassette {
-    return this.#cassette
+  get gearSystem(): GearSystem {
+    return this.#gearSystem
+  }
+
+  get wheel(): Wheel {
+    return this.#wheel
   }
 }

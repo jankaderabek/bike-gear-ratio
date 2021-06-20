@@ -1,4 +1,4 @@
-import { ChainRing } from '@/model/Bike/Components/CrankSet/ChainRing'
+import { ChainRing } from '@/model/Bike/GearSystem/Components/CrankSet/ChainRing'
 
 export class CrankSet {
   readonly #chainRings: ChainRing[]

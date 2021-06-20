@@ -1,5 +1,5 @@
-import { CrankSet } from '@/model/Bike/Components/CrankSet/CrankSet'
-import { ChainRing } from '@/model/Bike/Components/CrankSet/ChainRing'
+import { CrankSet } from '@/model/Bike/GearSystem/Components/CrankSet/CrankSet'
+import { ChainRing } from '@/model/Bike/GearSystem/Components/CrankSet/ChainRing'
 
 describe('Crank set test', () => {
   it('create new crank set with chain rings', () => {

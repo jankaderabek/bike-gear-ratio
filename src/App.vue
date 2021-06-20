@@ -15,11 +15,13 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import { useScriptTag } from '@vueuse/core'
-  import { ChainRing } from '@/model/Bike/Components/CrankSet/ChainRing'
-  import { Sprocket } from '@/model/Bike/Components/Cassette/Sprocket'
+  import { ChainRing } from '@/model/Bike/GearSystem/Components/CrankSet/ChainRing'
+  import { Sprocket } from '@/model/Bike/GearSystem/Components/Cassette/Sprocket'
   import { Bike } from '@/model/Bike/Bike'
-  import { CrankSet } from '@/model/Bike/Components/CrankSet/CrankSet'
-  import { Cassette } from '@/model/Bike/Components/Cassette/Cassette'
+  import { CrankSet } from '@/model/Bike/GearSystem/Components/CrankSet/CrankSet'
+  import { Cassette } from '@/model/Bike/GearSystem/Components/Cassette/Cassette'
+  import { GearSystem } from '@/model/Bike/GearSystem/GearSystem'
+  import { Wheel } from '@/model/Bike/Wheel'
 
   declare global {
     interface Window {
@@ -37,38 +39,44 @@
 
       // 11-13-15-17-19-21-23-25-27-30-34
       const bike1 = new Bike(
-        new CrankSet(new ChainRing(32), new ChainRing(48)),
-        new Cassette(
-          new Sprocket(11),
-          new Sprocket(13),
-          new Sprocket(15),
-          new Sprocket(17),
-          new Sprocket(19),
-          new Sprocket(21),
-          new Sprocket(23),
-          new Sprocket(25),
-          new Sprocket(27),
-          new Sprocket(30),
-          new Sprocket(34)
-        )
+        new GearSystem(
+          new CrankSet(new ChainRing(32), new ChainRing(48)),
+          new Cassette(
+            new Sprocket(11),
+            new Sprocket(13),
+            new Sprocket(15),
+            new Sprocket(17),
+            new Sprocket(19),
+            new Sprocket(21),
+            new Sprocket(23),
+            new Sprocket(25),
+            new Sprocket(27),
+            new Sprocket(30),
+            new Sprocket(34)
+          )
+        ),
+        new Wheel(2000)
       )
 
       // 11-12-13-14-15-17-19-21-24-27-30
       const bike2 = new Bike(
-        new CrankSet(new ChainRing(32), new ChainRing(48)),
-        new Cassette(
-          new Sprocket(11),
-          new Sprocket(12),
-          new Sprocket(13),
-          new Sprocket(14),
-          new Sprocket(15),
-          new Sprocket(17),
-          new Sprocket(19),
-          new Sprocket(21),
-          new Sprocket(24),
-          new Sprocket(27),
-          new Sprocket(30)
-        )
+        new GearSystem(
+          new CrankSet(new ChainRing(32), new ChainRing(48)),
+          new Cassette(
+            new Sprocket(11),
+            new Sprocket(12),
+            new Sprocket(13),
+            new Sprocket(14),
+            new Sprocket(15),
+            new Sprocket(17),
+            new Sprocket(19),
+            new Sprocket(21),
+            new Sprocket(24),
+            new Sprocket(27),
+            new Sprocket(30)
+          )
+        ),
+        new Wheel(2000)
       )
 
       const onGoogleLoaded = () => {
@@ -76,26 +84,28 @@
         let dataSource: Array<any> = [
           [
             'Číslo převodu',
-            `${bike1.cassette.sprockets[0].teethes} - ${
-              bike1.cassette.sprockets[bike1.cassette.sprockets.length - 1]
-                .teethes
+            `${bike1.gearSystem.cassette.sprockets[0].teethes} - ${
+              bike1.gearSystem.cassette.sprockets[
+                bike1.gearSystem.cassette.sprockets.length - 1
+              ].teethes
             }`,
             { role: 'tooltip' },
-            `${bike2.cassette.sprockets[0].teethes} - ${
-              bike2.cassette.sprockets[bike2.cassette.sprockets.length - 1]
-                .teethes
+            `${bike2.gearSystem.cassette.sprockets[0].teethes} - ${
+              bike2.gearSystem.cassette.sprockets[
+                bike2.gearSystem.cassette.sprockets.length - 1
+              ].teethes
             }`,
             { role: 'tooltip' },
           ],
         ]
 
-        for (let i = 0; i < bike1.cassette.sprockets.length; i++) {
+        for (let i = 0; i < bike1.gearSystem.cassette.sprockets.length; i++) {
           dataSource.push([
             i + 1,
-            bike1.gears[i]?.ratio.ratio,
-            `${bike1.gears[i]?.chainRing.teethes}x${bike1.gears[i]?.sprocket.teethes}`,
-            bike2.gears[i]?.ratio.ratio,
-            `${bike2.gears[i]?.chainRing.teethes}x${bike2.gears[i]?.sprocket.teethes}`,
+            bike1.gearSystem.gears[i]?.ratio.value,
+            `${bike1.gearSystem.gears[i]?.chainRing.teethes}x${bike1.gearSystem.gears[i]?.sprocket.teethes}`,
+            bike2.gearSystem.gears[i]?.ratio.value,
+            `${bike2.gearSystem.gears[i]?.chainRing.teethes}x${bike2.gearSystem.gears[i]?.sprocket.teethes}`,
           ])
         }
 
@@ -105,6 +115,7 @@
           bars: 'horizontal',
           vAxis: {
             title: 'Zvolený stupeň na kazetě',
+            gridlines: { count: 11 },
           },
           height: 600,
         }
